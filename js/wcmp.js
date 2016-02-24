@@ -25,8 +25,8 @@ $(document).ready(function(){
 				fixFlash_mp4 = event.jPlayer.flash.used && /m4a|m4v/.test(event.jPlayer.options.supplied);
 				// Setup the player with media.
 				$(this).jPlayer("setMedia", {
-					// mp3: "http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
-					mp3: "audio/first.mp3"
+
+					mp3: "audio/1-bob-entrance.mp3"
 				});
 			},
 			timeupdate: function(event) {
@@ -105,8 +105,8 @@ $(document).ready(function(){
 				fixFlash_mp4 = event.jPlayer.flash.used && /m4a|m4v/.test(event.jPlayer.options.supplied);
 				// Setup the player with media.
 				$(this).jPlayer("setMedia", {
-					// mp3: "http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
-					m4a: "audio/second.m4a"
+
+					mp3: "audio/2-amy-entrance.mp3"
 				});
 			},
 			timeupdate: function(event) {
@@ -121,7 +121,7 @@ $(document).ready(function(){
 					myControl.volume.slider("value", event.jPlayer.options.volume);
 				}
 			},
-			supplied: "m4a",
+			supplied: "mp3",
 			cssSelectorAncestor: "#jp_container_2",
 			wmode: "window",
 			keyEnabled: true
@@ -187,8 +187,8 @@ $(document).ready(function(){
 				fixFlash_mp4 = event.jPlayer.flash.used && /m4a|m4v/.test(event.jPlayer.options.supplied);
 				// Setup the player with media.
 				$(this).jPlayer("setMedia", {
-					// mp3: "http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
-					mp3: "audio/third.mp3"
+
+					mp3: "audio/3-final-frontier.mp3"
 				});
 			},
 			timeupdate: function(event) {
@@ -256,6 +256,328 @@ $(document).ready(function(){
 
 
 
+  var myPlayer = $("#jquery_jplayer_4"),
+		myPlayerData,
+		ignore_timeupdate, // Flag used with fixFlash_mp4
+		options = {
+			ready: function (event) {
+				// Hide the volume slider on mobile browsers. ie., They have no effect.
+				if(event.jPlayer.status.noVolume) {
+					// Add a class and then CSS rules deal with it.
+					$(".jp-gui").addClass("jp-no-volume");
+				}
+				// Determine if Flash is being used and the mp4 media type is supplied. BTW, Supplying both mp3 and mp4 is pointless.
+				fixFlash_mp4 = event.jPlayer.flash.used && /m4a|m4v/.test(event.jPlayer.options.supplied);
+				// Setup the player with media.
+				$(this).jPlayer("setMedia", {
+					mp3: "audio/4-background-music-1.mp3"
+				});
+			},
+			timeupdate: function(event) {
+				if(!ignore_timeupdate) {
+					myControl.progress.slider("value", event.jPlayer.status.currentPercentAbsolute);
+				}
+			},
+			volumechange: function(event) {
+				if(event.jPlayer.options.muted) {
+					myControl.volume.slider("value", 0);
+				} else {
+					myControl.volume.slider("value", event.jPlayer.options.volume);
+				}
+			},
+			supplied: "mp3",
+			cssSelectorAncestor: "#jp_container_4",
+			wmode: "window",
+			keyEnabled: true
+		},
+		myControl = {
+			progress: $(options.cssSelectorAncestor + " .jp-progress-slider"),
+			volume: $(options.cssSelectorAncestor + " .jp-volume-slider")
+		};
+	// Instance jPlayer
+	myPlayer.jPlayer(options);
+
+	// A pointer to the jPlayer data object
+	myPlayerData = myPlayer.data("jPlayer");
+
+	// Define hover states of the buttons
+	$('.jp-gui ul li').hover(
+		function() { $(this).addClass('ui-state-hover'); },
+		function() { $(this).removeClass('ui-state-hover'); }
+	);
+
+	// Create the progress slider control
+	myControl.progress.slider({
+		animate: "fast",
+		max: 100,
+		range: "min",
+		step: 0.1,
+		value : 0,
+		slide: function(event, ui) {
+			var sp = myPlayerData.status.seekPercent;
+			if(sp > 0) {
+				// Apply a fix to mp4 formats when the Flash is used.
+				if(fixFlash_mp4) {
+					ignore_timeupdate = true;
+					clearTimeout(fixFlash_mp4_id);
+					fixFlash_mp4_id = setTimeout(function() {
+						ignore_timeupdate = false;
+					},1000);
+				}
+				// Move the play-head to the value and factor in the seek percent.
+				myPlayer.jPlayer("playHead", ui.value * (100 / sp));
+			} else {
+				// Create a timeout to reset this slider to zero.
+				setTimeout(function() {
+					myControl.progress.slider("value", 0);
+				}, 0);
+			}
+		}
+	});
+
+
+  var myPlayer = $("#jquery_jplayer_5"),
+		myPlayerData,
+		ignore_timeupdate, // Flag used with fixFlash_mp4
+		options = {
+			ready: function (event) {
+				// Hide the volume slider on mobile browsers. ie., They have no effect.
+				if(event.jPlayer.status.noVolume) {
+					// Add a class and then CSS rules deal with it.
+					$(".jp-gui").addClass("jp-no-volume");
+				}
+				// Determine if Flash is being used and the mp4 media type is supplied. BTW, Supplying both mp3 and mp4 is pointless.
+				fixFlash_mp4 = event.jPlayer.flash.used && /m4a|m4v/.test(event.jPlayer.options.supplied);
+				// Setup the player with media.
+				$(this).jPlayer("setMedia", {
+					mp3: "audio/5-background-music-2.mp3"
+				});
+			},
+			timeupdate: function(event) {
+				if(!ignore_timeupdate) {
+					myControl.progress.slider("value", event.jPlayer.status.currentPercentAbsolute);
+				}
+			},
+			volumechange: function(event) {
+				if(event.jPlayer.options.muted) {
+					myControl.volume.slider("value", 0);
+				} else {
+					myControl.volume.slider("value", event.jPlayer.options.volume);
+				}
+			},
+			supplied: "mp3",
+			cssSelectorAncestor: "#jp_container_5",
+			wmode: "window",
+			keyEnabled: true
+		},
+		myControl = {
+			progress: $(options.cssSelectorAncestor + " .jp-progress-slider"),
+			volume: $(options.cssSelectorAncestor + " .jp-volume-slider")
+		};
+	// Instance jPlayer
+	myPlayer.jPlayer(options);
+
+	// A pointer to the jPlayer data object
+	myPlayerData = myPlayer.data("jPlayer");
+
+	// Define hover states of the buttons
+	$('.jp-gui ul li').hover(
+		function() { $(this).addClass('ui-state-hover'); },
+		function() { $(this).removeClass('ui-state-hover'); }
+	);
+
+	// Create the progress slider control
+	myControl.progress.slider({
+		animate: "fast",
+		max: 100,
+		range: "min",
+		step: 0.1,
+		value : 0,
+		slide: function(event, ui) {
+			var sp = myPlayerData.status.seekPercent;
+			if(sp > 0) {
+				// Apply a fix to mp4 formats when the Flash is used.
+				if(fixFlash_mp4) {
+					ignore_timeupdate = true;
+					clearTimeout(fixFlash_mp4_id);
+					fixFlash_mp4_id = setTimeout(function() {
+						ignore_timeupdate = false;
+					},1000);
+				}
+				// Move the play-head to the value and factor in the seek percent.
+				myPlayer.jPlayer("playHead", ui.value * (100 / sp));
+			} else {
+				// Create a timeout to reset this slider to zero.
+				setTimeout(function() {
+					myControl.progress.slider("value", 0);
+				}, 0);
+			}
+		}
+	});
+
+
+
+  var myPlayer = $("#jquery_jplayer_6"),
+		myPlayerData,
+		ignore_timeupdate, // Flag used with fixFlash_mp4
+		options = {
+			ready: function (event) {
+				// Hide the volume slider on mobile browsers. ie., They have no effect.
+				if(event.jPlayer.status.noVolume) {
+					// Add a class and then CSS rules deal with it.
+					$(".jp-gui").addClass("jp-no-volume");
+				}
+				// Determine if Flash is being used and the mp4 media type is supplied. BTW, Supplying both mp3 and mp4 is pointless.
+				fixFlash_mp4 = event.jPlayer.flash.used && /m4a|m4v/.test(event.jPlayer.options.supplied);
+				// Setup the player with media.
+				$(this).jPlayer("setMedia", {
+					mp3: "audio/6-background-music-3.mp3"
+				});
+			},
+			timeupdate: function(event) {
+				if(!ignore_timeupdate) {
+					myControl.progress.slider("value", event.jPlayer.status.currentPercentAbsolute);
+				}
+			},
+			volumechange: function(event) {
+				if(event.jPlayer.options.muted) {
+					myControl.volume.slider("value", 0);
+				} else {
+					myControl.volume.slider("value", event.jPlayer.options.volume);
+				}
+			},
+			supplied: "mp3",
+			cssSelectorAncestor: "#jp_container_6",
+			wmode: "window",
+			keyEnabled: true
+		},
+		myControl = {
+			progress: $(options.cssSelectorAncestor + " .jp-progress-slider"),
+			volume: $(options.cssSelectorAncestor + " .jp-volume-slider")
+		};
+	// Instance jPlayer
+	myPlayer.jPlayer(options);
+
+	// A pointer to the jPlayer data object
+	myPlayerData = myPlayer.data("jPlayer");
+
+	// Define hover states of the buttons
+	$('.jp-gui ul li').hover(
+		function() { $(this).addClass('ui-state-hover'); },
+		function() { $(this).removeClass('ui-state-hover'); }
+	);
+
+	// Create the progress slider control
+	myControl.progress.slider({
+		animate: "fast",
+		max: 100,
+		range: "min",
+		step: 0.1,
+		value : 0,
+		slide: function(event, ui) {
+			var sp = myPlayerData.status.seekPercent;
+			if(sp > 0) {
+				// Apply a fix to mp4 formats when the Flash is used.
+				if(fixFlash_mp4) {
+					ignore_timeupdate = true;
+					clearTimeout(fixFlash_mp4_id);
+					fixFlash_mp4_id = setTimeout(function() {
+						ignore_timeupdate = false;
+					},1000);
+				}
+				// Move the play-head to the value and factor in the seek percent.
+				myPlayer.jPlayer("playHead", ui.value * (100 / sp));
+			} else {
+				// Create a timeout to reset this slider to zero.
+				setTimeout(function() {
+					myControl.progress.slider("value", 0);
+				}, 0);
+			}
+		}
+	});
+
+
+
+  var myPlayer = $("#jquery_jplayer_7"),
+		myPlayerData,
+		ignore_timeupdate, // Flag used with fixFlash_mp4
+		options = {
+			ready: function (event) {
+				// Hide the volume slider on mobile browsers. ie., They have no effect.
+				if(event.jPlayer.status.noVolume) {
+					// Add a class and then CSS rules deal with it.
+					$(".jp-gui").addClass("jp-no-volume");
+				}
+				// Determine if Flash is being used and the mp4 media type is supplied. BTW, Supplying both mp3 and mp4 is pointless.
+				fixFlash_mp4 = event.jPlayer.flash.used && /m4a|m4v/.test(event.jPlayer.options.supplied);
+				// Setup the player with media.
+				$(this).jPlayer("setMedia", {
+					mp3: "audio/7-recessional.mp3"
+				});
+			},
+			timeupdate: function(event) {
+				if(!ignore_timeupdate) {
+					myControl.progress.slider("value", event.jPlayer.status.currentPercentAbsolute);
+				}
+			},
+			volumechange: function(event) {
+				if(event.jPlayer.options.muted) {
+					myControl.volume.slider("value", 0);
+				} else {
+					myControl.volume.slider("value", event.jPlayer.options.volume);
+				}
+			},
+			supplied: "mp3",
+			cssSelectorAncestor: "#jp_container_7",
+			wmode: "window",
+			keyEnabled: true
+		},
+		myControl = {
+			progress: $(options.cssSelectorAncestor + " .jp-progress-slider"),
+			volume: $(options.cssSelectorAncestor + " .jp-volume-slider")
+		};
+	// Instance jPlayer
+	myPlayer.jPlayer(options);
+
+	// A pointer to the jPlayer data object
+	myPlayerData = myPlayer.data("jPlayer");
+
+	// Define hover states of the buttons
+	$('.jp-gui ul li').hover(
+		function() { $(this).addClass('ui-state-hover'); },
+		function() { $(this).removeClass('ui-state-hover'); }
+	);
+
+	// Create the progress slider control
+	myControl.progress.slider({
+		animate: "fast",
+		max: 100,
+		range: "min",
+		step: 0.1,
+		value : 0,
+		slide: function(event, ui) {
+			var sp = myPlayerData.status.seekPercent;
+			if(sp > 0) {
+				// Apply a fix to mp4 formats when the Flash is used.
+				if(fixFlash_mp4) {
+					ignore_timeupdate = true;
+					clearTimeout(fixFlash_mp4_id);
+					fixFlash_mp4_id = setTimeout(function() {
+						ignore_timeupdate = false;
+					},1000);
+				}
+				// Move the play-head to the value and factor in the seek percent.
+				myPlayer.jPlayer("playHead", ui.value * (100 / sp));
+			} else {
+				// Create a timeout to reset this slider to zero.
+				setTimeout(function() {
+					myControl.progress.slider("value", 0);
+				}, 0);
+			}
+		}
+	});
+
+
 
 
   $("#jquery_jplayer_1").jPlayer("volume", 1.0);
@@ -264,52 +586,102 @@ $(document).ready(function(){
 
   $("#jquery_jplayer_3").jPlayer("volume", 1.0);
 
+  $("#jquery_jplayer_4").jPlayer("volume", 1.0);
 
-$("#fadeout_1").click(function() {
-  $("#bg_1").css("background","#666");
-  $("#jp_container_1 img").show();
-  $("#jquery_jplayer_1").jPlayerFade().out(4000);
+  $("#jquery_jplayer_5").jPlayer("volume", 1.0);
 
-  setTimeout(function(){
-    $("#jquery_jplayer_1").jPlayer("stop");
-  }, 5000);
-});
+  $("#jquery_jplayer_6").jPlayer("volume", 1.0);
 
-$("#fadeout_2").click(function() {
-  $("#bg_2").css("background","#666");
-  $("#jp_container_2 img").show();
-  $("#jquery_jplayer_2").jPlayerFade().out(4000);
-  setTimeout(function(){
-    $("#jquery_jplayer_2").jPlayer("stop");
-  }, 5000);
-
-});
-
-$("#fadeout_3").click(function() {
-  $("#bg_3").css("background","#666");
-  $("#jp_container_3 img").show();
-  $("#jquery_jplayer_3").jPlayerFade().out(4000);
-  setTimeout(function(){
-    $("#jquery_jplayer_3").jPlayer("stop");
-  }, 5000);
-
-});
+  $("#jquery_jplayer_7").jPlayer("volume", 1.0);
 
 
+  $("#fadeout_1").click(function() {
+    $("#bg_1").css("background","#666");
+    $("#jp_container_1 img").show();
+    $("#jquery_jplayer_1").jPlayerFade().out(4000);
+    setTimeout(function(){
+      $("#jquery_jplayer_1").jPlayer("stop");
+    }, 5000);
+  });
+
+  $("#fadeout_2").click(function() {
+    $("#bg_2").css("background","#666");
+    $("#jp_container_2 img").show();
+    $("#jquery_jplayer_2").jPlayerFade().out(4000);
+    setTimeout(function(){
+      $("#jquery_jplayer_2").jPlayer("stop");
+    }, 5000);
+  });
+
+  $("#fadeout_3").click(function() {
+    $("#bg_3").css("background","#666");
+    $("#jp_container_3 img").show();
+    $("#jquery_jplayer_3").jPlayerFade().out(4000);
+    setTimeout(function(){
+      $("#jquery_jplayer_3").jPlayer("stop");
+    }, 5000);
+  });
+
+  $("#fadeout_4").click(function() {
+    $("#bg_4").css("background","#666");
+    $("#jp_container_4 img").show();
+    $("#jquery_jplayer_4").jPlayerFade().out(4000);
+    setTimeout(function(){
+      $("#jquery_jplayer_4").jPlayer("stop");
+    }, 5000);
+  });
+
+  $("#fadeout_5").click(function() {
+    $("#bg_5").css("background","#666");
+    $("#jp_container_5 img").show();
+    $("#jquery_jplayer_5").jPlayerFade().out(4000);
+    setTimeout(function(){
+      $("#jquery_jplayer_5").jPlayer("stop");
+    }, 5000);
+  });
+
+  $("#fadeout_6").click(function() {
+    $("#bg_6").css("background","#666");
+    $("#jp_container_6 img").show();
+    $("#jquery_jplayer_6").jPlayerFade().out(4000);
+    setTimeout(function(){
+      $("#jquery_jplayer_6").jPlayer("stop");
+    }, 5000);
+  });
+
+  $("#fadeout_7").click(function() {
+    $("#bg_7").css("background","#666");
+    $("#jp_container_7 img").show();
+    $("#jquery_jplayer_7").jPlayerFade().out(4000);
+    setTimeout(function(){
+      $("#jquery_jplayer_7").jPlayer("stop");
+    }, 5000);
+  });
 
 
-$("#play_1").click(function() {
-  $("#bg_1").css("background","blue");
-});
 
-$("#play_2").click(function() {
-  $("#bg_2").css("background","blue");
-});
 
-$("#play_3").click(function() {
-  $("#bg_3").css("background","blue");
-});
-
+  $("#play_1").click(function() {
+    $("#bg_1").css("background","blue");
+  });
+  $("#play_2").click(function() {
+    $("#bg_2").css("background","blue");
+  });
+  $("#play_3").click(function() {
+    $("#bg_3").css("background","blue");
+  });
+  $("#play_4").click(function() {
+    $("#bg_4").css("background","blue");
+  });
+  $("#play_5").click(function() {
+    $("#bg_5").css("background","blue");
+  });
+  $("#play_6").click(function() {
+    $("#bg_6").css("background","blue");
+  });
+  $("#play_7").click(function() {
+    $("#bg_7").css("background","blue");
+  });
 
 
 });
