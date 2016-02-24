@@ -48,9 +48,20 @@ h4 {
 //
 
 html, body {
-  background: black;
+  background: @slate;
   color: #fff;
   font-family: Arial;
+  max-width: 768px;
+}
+
+#viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 768px;
+  height: 1366px;
+  z-index: 0;
+  background: black;
 }
 
 ul, li {
