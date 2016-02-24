@@ -512,7 +512,8 @@ $(document).ready(function(){
 				fixFlash_mp4 = event.jPlayer.flash.used && /m4a|m4v/.test(event.jPlayer.options.supplied);
 				// Setup the player with media.
 				$(this).jPlayer("setMedia", {
-					mp3: "audio/7-recessional.mp3"
+					//mp3: "audio/7-recessional.mp3"
+					mp3: "audio/8-recessional-placeholder.mp3"
 				});
 			},
 			timeupdate: function(event) {
