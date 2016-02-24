@@ -1,0 +1,62 @@
+html(lang="en-us")
+  head
+    include /inc/meta.jade
+    title Wedding Ceremony Music Player
+  body#top
+    //- Begin Page-Specific Content
+
+    #jquery_jplayer_1.jp-jplayer
+
+    #jp_container_1
+      #bg_1.background
+        h3 Processional
+        .jp-current-time
+        .jp-duration
+        ul
+          li.jp-play.ui-state-default.ui-corner-all
+            a#play_1.jp-play.ui-icon.ui-icon-play(href="javascript:;" tabindex="1" title="play") play
+          li
+            button#fadeout_1 Fade Out
+
+        img(src="img/checkmark.svg")
+
+    #jquery_jplayer_2.jp-jplayer
+
+    #jp_container_2
+      #bg_2.background
+        h3 Bridal March
+        .jp-current-time
+        .jp-duration
+        ul
+          li.jp-play.ui-state-default.ui-corner-all
+            a#play_2.jp-play.ui-icon.ui-icon-play(href="javascript:;" tabindex="1" title="play") play
+          li
+            button#fadeout_2 Fade Out
+
+        img(src="img/checkmark.svg")
+
+    br
+    br
+    hr
+    br
+    br
+
+    #jquery_jplayer_3.jp-jplayer
+
+    #jp_container_3
+      #bg_3.background
+        h3 Recessional
+        .jp-current-time
+        .jp-duration
+        ul
+          li.jp-play.ui-state-default.ui-corner-all
+            a#play_3.jp-play.ui-icon.ui-icon-play(href="javascript:;" tabindex="1" title="play") play
+          li
+            button#fadeout_3 Fade Out
+
+        img(src="img/checkmark.svg")
+
+
+
+    //- END Page-Specific Content
+    include /inc/scripts.jade
