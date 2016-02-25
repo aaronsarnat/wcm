@@ -80,6 +80,25 @@ h3 {
   &:focus {
     outline: none;
   }
+
+  &,
+  &:after {
+    .fn-transition-property(opacity, .2s);
+  }
+
+  &:active {
+    .button-active;
+    .fn-transition-duration(0s);
+  }
+}
+
+.button-active {
+  background-color: #3f63fc;
+  color: #fff;
+
+  &.jp-play:after {
+    background-image: url(../img/play-inverted.svg);
+  }
 }
 
 .jp-play {
@@ -110,9 +129,11 @@ h3 {
 
 .button:disabled {
   opacity: .2;
+  .fn-transition-duration(0);
 
   &:after {
     opacity: .3;
+    .fn-transition-duration(0);
   }
 }
 
@@ -146,6 +167,7 @@ h3 {
 
   .bars {
     opacity: 1;
+    .fn-transition-duration(4s);
   }
 }
 

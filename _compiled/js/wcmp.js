@@ -9,6 +9,15 @@ $(document).ready(function(){
   // $("#jquery_jplayer_6").jPlayer("volume", 1.0);
   // $("#jquery_jplayer_7").jPlayer("volume", 1.0);
 
+
+	function initializeTreatment() {
+		$(".background").addClass("treatment-disabled");
+		$(".track-tile:first-child .background")
+			.removeClass("treatment-disabled")
+			.addClass("treatment-idle")
+		;
+	}
+
 	function updateTreatment() {
 		$(".background").each(function() {
 			if ($(this).hasClass("treatment-disabled")) {
@@ -31,7 +40,9 @@ $(document).ready(function(){
 		});
 	}
 
+	initializeTreatment();
 	updateTreatment();
+
 
   $(".jp-play").click(function() {
 		var thisTrack = $(this).parents(".track-tile");
@@ -78,6 +89,30 @@ $(document).ready(function(){
     }, 5000);
   });
 
+	$(".button").bind("touchstart", function() {
+    $(this).addClass(".button-active");
+  }).bind("touchend", function() {
+      $(this).removeClass(".button-active");
+  });
+
+	$('.jp-jplayer').unbind($.jPlayer.event.ended).bind($.jPlayer.event.ended, function() {
+		var thisTrack = $(this).parents(".track-tile");
+
+		thisTrack.children(".background")
+			.removeClass("treatment-playing")
+			.addClass("treatment-finished")
+		;
+		$(this).find(".jp-fadeout")
+			.prop("disabled", true)
+			.text("Fading Out...")
+		;
+		thisTrack.next(".track-tile").children(".background")
+			.removeClass("treatment-disabled")
+			.addClass("treatment-idle")
+		;
+		updateTreatment();
+	});
+
 	/*
 	 * jQuery UI ThemeRoller
 	 *
@@ -105,6 +140,7 @@ $(document).ready(function(){
 				$(this).jPlayer("setMedia", {
 
 					mp3: "audio/1-bob-entrance.mp3"
+					//mp3: "audio/test.mp3"
 				});
 			},
 			timeupdate: function(event) {
@@ -331,6 +367,9 @@ $(document).ready(function(){
 			}
 		}
 	});
+
+
+
 
 
 
