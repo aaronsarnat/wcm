@@ -129,8 +129,8 @@ $(document).ready(function(){
 		options = {
 			ready: function (event) {
 				$(this).jPlayer("setMedia", {
-					//mp3: "audio/1-bob-entrance.mp3"
-					mp3: "audio/test.mp3"
+					mp3: "audio/1-bob-entrance.mp3"
+					//mp3: "audio/test.mp3"
 				});
 			},
 			supplied: "mp3",
