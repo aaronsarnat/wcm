@@ -9,6 +9,7 @@ html, body {
   touch-action: none;
 }
 
+
 // #viewport {
 //   position: absolute;
 //   top: 0;
@@ -147,12 +148,12 @@ h3 {
   .fn-transition(background-color .2s, color .2s);
 
   &:after {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     opacity: 0;
     position: absolute;
-    right: 30px;
-    top: 50px;
+    right: 40px;
+    top: 55px;
     content: "";
     background: url(../img/checkmark.svg) center center no-repeat;
     .fn-transition-property(opacity, .2s);
@@ -175,9 +176,9 @@ h3 {
 
 .treatment-fading-out {
   .jp-fadeout:disabled {
-    .fn-transition-property(opacity, 5s);
+    .fn-transition(opacity 5s, color 5s);
     opacity: .2;
-    color: blue;
+    color: #4e4e56;
   }
 
   .jp-play:disabled {
@@ -191,13 +192,29 @@ h3 {
   }
 }
 
+.treatment-fading-out.treatment-playing {
+  background-color: #4e4e56;
+  color: #ccc;
+  .fn-transition-duration(5s);
+
+  .jp-play:disabled {
+    .fn-transition(background-color 5s, opacity 5s);
+    background-color: #aaa;
+    opacity: .2;
+  }
+}
+
 .treatment-idle {
   outline: 4px solid rgba(222,222,255,.2);
 }
 
 .treatment-disabled {
   background-color: #111;
-  color: #666;
+  color: #444;
+
+  .button:disabled {
+     opacity: .07;
+  }
 }
 
 .treatment-playing {
@@ -208,7 +225,8 @@ h3 {
 }
 
 .treatment-finished {
-  background-color: #666;
+  background-color: #525252;
+  color: #bbb;
 
   img {
     //display: block;

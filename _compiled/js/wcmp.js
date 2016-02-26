@@ -187,7 +187,7 @@ $(document).ready(function(){
 				});
 			},
 			supplied: "mp3",
-			volume: 0.03,
+			volume: 0.015,
 			cssSelectorAncestor: "#jp_container_4",
 			wmode: "window",
 			keyEnabled: true
@@ -207,7 +207,7 @@ $(document).ready(function(){
 					});
 				},
 				supplied: "mp3",
-				volume: 0.03,
+				volume: 0.015,
 				cssSelectorAncestor: "#jp_container_5",
 				wmode: "window",
 				keyEnabled: true
@@ -227,7 +227,7 @@ $(document).ready(function(){
 					});
 				},
 				supplied: "mp3",
-				volume: 0.03,
+				volume: 0.015,
 				cssSelectorAncestor: "#jp_container_6",
 				wmode: "window",
 				keyEnabled: true
