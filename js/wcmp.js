@@ -43,7 +43,7 @@ $(document).ready(function(){
 		if ($(".track-tile.finished").length == $(".track-tile").length) {
 			setTimeout(function(){
 	    	$("#end-screen").addClass("visible");
-	    }, 2000);
+	    }, 1000);
 		}
 	}
 
