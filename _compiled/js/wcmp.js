@@ -36,8 +36,15 @@ $(document).ready(function(){
 			}
 			if ($(this).hasClass("treatment-finished")) {
 				$(this).find(".button").prop("disabled", true);
+				$(this).parents(".track-tile").addClass("finished")
 			}
 		});
+
+		if ($(".track-tile.finished").length == $(".track-tile").length) {
+			setTimeout(function(){
+	    	$("#end-screen").addClass("visible");
+	    }, 2000);
+		}
 	}
 
 	initializeTreatment();
@@ -122,8 +129,8 @@ $(document).ready(function(){
 		options = {
 			ready: function (event) {
 				$(this).jPlayer("setMedia", {
-					mp3: "audio/1-bob-entrance.mp3"
-					//mp3: "audio/test.mp3"
+					//mp3: "audio/1-bob-entrance.mp3"
+					mp3: "audio/test.mp3"
 				});
 			},
 			supplied: "mp3",
