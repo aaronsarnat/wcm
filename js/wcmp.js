@@ -129,11 +129,11 @@ $(document).ready(function(){
 		options = {
 			ready: function (event) {
 				$(this).jPlayer("setMedia", {
-					mp3: "audio/1-bob-entrance.mp3"
+					m4a: "audio/Canon-in-D Major.m4a"
 					//mp3: "audio/test.mp3"
 				});
 			},
-			supplied: "mp3",
+			supplied: "m4a",
 			volume: 1,
 			cssSelectorAncestor: "#jp_container_1",
 			wmode: "window",
@@ -149,11 +149,11 @@ $(document).ready(function(){
 		options = {
 			ready: function (event) {
 				$(this).jPlayer("setMedia", {
-					mp3: "audio/2-amy-entrance.mp3"
+					m4a: "audio/Bridal-Chorus.m4a"
 					//mp3: "audio/test.mp3"
 				});
 			},
-			supplied: "mp3",
+			supplied: "m4a",
 			volume: 1,
 			cssSelectorAncestor: "#jp_container_2",
 			wmode: "window",
@@ -169,11 +169,11 @@ $(document).ready(function(){
 		options = {
 			ready: function (event) {
 				$(this).jPlayer("setMedia", {
-					mp3: "audio/3-final-frontier.mp3"
+					m4a: "audio/Wedding March.m4a"
 					//mp3: "audio/test.mp3"
 				});
 			},
-			supplied: "mp3",
+			supplied: "m4a",
 			volume: 1,
 			cssSelectorAncestor: "#jp_container_3",
 			wmode: "window",
@@ -182,86 +182,6 @@ $(document).ready(function(){
 		myPlayer.jPlayer(options);
 		myPlayerData = myPlayer.data("jPlayer");
 
-
-	// New jPlayer Track
-	var myPlayer = $("#jquery_jplayer_4"),
-		myPlayerData,
-		options = {
-			ready: function (event) {
-				$(this).jPlayer("setMedia", {
-					mp3: "audio/4-background-music-1.mp3"
-					//mp3: "audio/test.mp3"
-				});
-			},
-			supplied: "mp3",
-			volume: 0.015,
-			cssSelectorAncestor: "#jp_container_4",
-			wmode: "window",
-			keyEnabled: true
-		}
-		myPlayer.jPlayer(options);
-		myPlayerData = myPlayer.data("jPlayer");
-
-
-		// New jPlayer Track
-		var myPlayer = $("#jquery_jplayer_5"),
-			myPlayerData,
-			options = {
-				ready: function (event) {
-					$(this).jPlayer("setMedia", {
-						mp3: "audio/5-background-music-2.mp3"
-						//mp3: "audio/test.mp3"
-					});
-				},
-				supplied: "mp3",
-				volume: 0.015,
-				cssSelectorAncestor: "#jp_container_5",
-				wmode: "window",
-				keyEnabled: true
-			}
-			myPlayer.jPlayer(options);
-			myPlayerData = myPlayer.data("jPlayer");
-
-
-		// New jPlayer Track
-		var myPlayer = $("#jquery_jplayer_6"),
-			myPlayerData,
-			options = {
-				ready: function (event) {
-					$(this).jPlayer("setMedia", {
-						mp3: "audio/6-background-music-3.mp3"
-						//mp3: "audio/test.mp3"
-					});
-				},
-				supplied: "mp3",
-				volume: 0.015,
-				cssSelectorAncestor: "#jp_container_6",
-				wmode: "window",
-				keyEnabled: true
-			}
-			myPlayer.jPlayer(options);
-			myPlayerData = myPlayer.data("jPlayer");
-
-
-		// New jPlayer Track
-		var myPlayer = $("#jquery_jplayer_7"),
-			myPlayerData,
-			options = {
-				ready: function (event) {
-					$(this).jPlayer("setMedia", {
-						mp3: "audio/8-recessional-placeholder.mp3"
-						//mp3: "audio/7-recessional.mp3"
-						//mp3: "audio/test.mp3"
-					});
-				},
-				supplied: "mp3",
-				volume: 1,
-				cssSelectorAncestor: "#jp_container_7",
-				wmode: "window",
-				keyEnabled: true
-			}
-			myPlayer.jPlayer(options);
-			myPlayerData = myPlayer.data("jPlayer");
 
 
 	// var myPlayer = $("#jquery_jplayer_2"),
