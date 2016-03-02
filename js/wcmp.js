@@ -82,7 +82,18 @@ $(document).ready(function(){
 		;
 		updateTreatment();
 
-    thisPlayer.jPlayerFade().out(4000);
+		var counter = 5;
+		thisTrack.find(".label-count .content").html(counter);
+		var myInterval = setInterval(function () {
+			--counter;
+			thisTrack.find(".label-count .content").html(counter);
+
+			if (counter == 0) {
+				clearInterval(myInterval);
+			}
+		}, 1000);
+
+    thisPlayer.jPlayerFade().out(5000);
     setTimeout(function(){
       thisPlayer.jPlayer("stop");
 			thisPlayer.jPlayerFade().in(100);
@@ -169,7 +180,7 @@ $(document).ready(function(){
 		options = {
 			ready: function (event) {
 				$(this).jPlayer("setMedia", {
-					m4a: "audio/Wedding March.m4a"
+					m4a: "audio/Wedding-March.m4a"
 					//mp3: "audio/test.mp3"
 				});
 			},
